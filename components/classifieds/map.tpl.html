@@ -1,0 +1,343 @@
+<div ng-controller="MenuCtrl" >
+<!--<md-toolbar  >
+    <div class="md-toolbar-tools" flex>
+      <p><strong>ngClassifieds</strong></p>
+      <md-button ng-click="navi($event)">
+        <md-icon class="mdi mdi-plus-circle"></md-icon>
+        New classified
+      </md-button>
+
+      <md-button ui-sref="classifieds">Products</md-button>
+            <md-button ui-sref='classifieds2'>fruits</md-button>
+<md-button ng-click="showFilters = true">
+        <md-icon class="mdi mdi-magnify"></md-icon>
+        Filters
+      </md-button>
+    </div>
+</md-toolbar>
+
+
+-->
+
+
+
+
+
+<md-toolbar style="position: fixed;" class="transparent" ng-show="!showSearch">
+    <div class="md-toolbar-tools" flex>
+      <p><strong>Food</strong></p>
+     <span flex></span>
+<md-button ng-click="showSearch = true">
+        <md-icon class="mdi mdi-magnify"></md-icon>
+      </md-button>
+
+       <md-button class="md-icon-button" ng-click="showMenu = true; naviR() "   hide-gt-xs show-xs>
+          <md-tooltip>Menu</md-tooltip>
+          <img src="menu.png" style="width:24px;height:24px;"/>
+        </md-button>
+    </div>
+</md-toolbar>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<md-sidenav  class="md-sidenav-right md-whiteframe-z2" md-component-id="right">
+    <md-toolbar>
+      <h1 class="md-toolbar-tools">Menu</h1>
+    </md-toolbar>
+    <div layout="column" layout-align="none">
+<div>
+<!--<md-button ng-click="navi($event);cloR()">
+        <md-icon class="mdi mdi-plus-circle"></md-icon>
+        New Location
+      </md-button> -->
+</div>
+<div>
+<md-input readonly ng-show="checkLength()" type="text" value="{{ totalPrice }}"
+                   >{{ totalPrice }}</md-input></div>
+<div>
+ <md-select ng-model="category">
+        <md-option ng-repeat="category in categories" value="{{ category }}">
+          {{category}}
+        </md-option>
+      </md-select>
+</div>
+
+
+<md-button ng-repeat="category in categories"  ng-click="filterr(category)">{{category}}</md-button>
+
+ <md-button class="md-warn" ng-click="classifiedsFilter=''; category=''">
+        Clear
+      </md-button>
+
+ <div>     <md-button ng-show="!showOrders" ng-click="showOrders = true">Order</md-button> </div>
+ <div>     <md-button ng-show="showOrders" ng-click="showOrders = false">Menu</md-button> </div>
+          <div>  <md-button ng-click="cloR()">Cancel</md-button></div>
+            </div>
+</md-sidenav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <md-toolbar class="md-hue-1" ng-show="showSearch">
+        <div class="md-toolbar-tools">
+          <md-button ng-click="showSearch = !showSearch" aria-label="Back">
+             <md-icon class="mdi mdi-arrow-left"></md-icon>
+          </md-button>
+          
+         <md-input-container layout="row">
+      <label><i>Search</i></label>
+      <input type="text" ng-model="classifiedsFilter" />
+    </md-input-container>
+
+ <!--   <md-input-container>
+      <label><i>Category</i></label>
+      <md-select ng-model="category">
+        <md-option ng-repeat="category in categories" value="{{ category }}">
+          {{category}}
+        </md-option>
+      </md-select>
+    </md-input-container> -->
+ <span flex></span>
+    <md-input-container>
+      <md-button class="md-warn" ng-click="classifiedsFilter=''; category=''; showFilters=false">
+        Clear
+      </md-button>
+    </md-input-container>
+          
+        </div>
+       
+      </md-toolbar>
+
+
+
+
+
+
+
+
+
+<!--
+<div layout="coloumn">
+<md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left">
+    <md-toolbar>
+      <h1 class="md-toolbar-tools">Add a classified</h1>
+    </md-toolbar>
+
+    <md-content layout-padding>
+      <form>
+        <md-input-container>
+          <label for="title">Name</label>
+          <input type="text" id="name" ng-model="p1.name"
+                 md-autofocus>
+        </md-input-container>
+        <md-input-container>
+          <label for="price">Latitude</label>
+          <input type="text" id="latitude" ng-model="p1.latitude">
+        </md-input-container>
+        <md-input-container>
+          <label for="description">Longitude</label>
+          <textarea type="text" id="longitude" ng-model="p1.longitude"></textarea>
+        </md-input-container>
+        
+ 
+
+
+<md-input-container >
+        <label>Type</label>
+        <md-select ng-model="p1.categories.lol">
+          <md-option ng-repeat="img in images" value="{{img.categories}}">{{img.categories}}</md-option>
+        </md-select>
+      </md-input-container>
+      
+
+
+    
+        <md-button ng-if="!value" ng-click="saveobjects1(p1)" class="md-primary">
+          Save
+        </md-button>
+        <md-button ng-if="value" ng-click="finished()" class="md-primary">
+          Save Edit
+        </md-button>
+        <md-button ng-click="clo()" class="md-warn">
+          Cancel
+        </md-button>
+      </form>
+    </md-content>
+</md-sidenav> 
+</div>
+
+-->
+
+
+
+
+
+
+
+<!--
+<ng-map  default-style="true" center="{{add}}" >
+<br/> City:<input ng-model="add" />
+
+
+
+<marker position="current" animation="Animation.BOUNCE" centered="true"></marker>
+
+
+
+     <marker id="foo" position="{{lat, lng}}"
+        on-click="map.showInfoWindow(event, 'bar')">
+     
+      </marker>
+      <info-window id="bar" max-width="200">
+        <div ng-non-bindable>
+          <div id="siteNotice"></div>
+          <h1 >Uluru</h1>
+          <div id="bodyContent">
+            <p>
+            <b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large
+            sandstone rock formation in the southern part of the
+            No
+            </p>
+           
+          </div>
+        </div>
+      </info-window>
+
+
+
+  <marker id="foo" position="-24.363882,135.044922"
+        on-click="map.showInfoWindow(event, 'bar')">
+      </marker>
+      <info-window id="bar" max-width="200">
+        <div ng-non-bindable>
+          <div id="siteNotice"></div>
+          <h1 >Uluru</h1>
+          <div id="bodyContent">
+            <p>
+            <b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large
+            sandstone rock formation in the southern part of the
+            No
+            </p>
+           
+          </div>
+        </div>
+      </info-window>
+
+
+
+  <marker id="foo" position="25.363882,131.044922"
+        on-click="map.showInfoWindow(event, 'bar')">
+      </marker>
+      <info-window id="bar" max-width="200">
+        <div ng-non-bindable>
+          <div id="siteNotice"></div>
+          <h1 >Uluru</h1>
+          <div id="bodyContent">
+            <p>
+            <b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large
+            sandstone rock formation in the southern part of the
+            No
+            </p>
+           
+          </div>
+        </div>
+      </info-window>
+
+
+
+
+
+    </ng-map>
+    -->
+    <div ng-show="!showOrders" class='md-padding' layout="row" layout-wrap>
+
+<md-card style="width: 150px;" ng-repeat="(id, product) in objects|
+              filter: classifiedsFilter |
+              filter: category" 
+              class="classified">
+
+      <img src={{product.image}} alt="">
+      <md-card-content>
+        <div class="classified-info" ng-show="!showContact">
+          <h2 class="md-title">{{product.title}}</h2>
+          <h3>{{product.price | currency}}</h3>
+          
+        </div>
+       
+    <div layout="row">
+          <md-button ng-click="addToShoppingList(id)"> select </md-button>
+
+        </div>
+
+      </md-card-content>
+    </md-card>
+
+    </div>
+
+
+
+
+
+<div ng-show="showOrders" ng-repeat="(id, product) in itemsToBuy">
+
+  <md-button ng-click="removeFromCart(id)">x</md-button>
+  {{product.title}}<span flex></span>{{product.quantity}}
+  <md-button ng-click="addQuantity(id)" ng-disabled="product.quantity>=15">+</md-button>
+  <md-input readonly type="text" value="{{product.quantity}}"></md-input>
+  <md-button ng-click="removeQuantity(id)" ng-disabled="product.quantity==1">-</md-button>
+
+
+
+
+
+
+
+
+<div>
+<md-button ng-disabled="!checkLength()" ng-click="clearCart()">Clear the cart
+            </md-button>
+            <md-input readonly ng-show="!checkLength()" type="text" placeholder="Total price"
+                   ></md-input>
+            <md-input readonly ng-show="checkLength()" type="text" value="{{ totalPrice }}"
+                   >{{ totalPrice }}</md-input>
+            <md-button ng-disabled="!checkLength()"
+                    ng-click="confirmOrder(); clearCart()">Submit your order
+            </md-button></div>
+
+
+
+    </div>
